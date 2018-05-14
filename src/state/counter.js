@@ -1,14 +1,22 @@
+// Actions types
+const INC = 'counter/INC'
+const DEC = 'counter/DEC'
+
+// Actions creators
+// This are functions that call for each Action
+export const inc = () => ({ type: INC })
+export const dec = () => ({ type: DEC })
+
+// Initial state - state is empty by default
 const initialState = 0
 
 export default (state = initialState, action) => {
-  return state
+  switch (action.type) {
+    case INC:
+      return state + 1
+    case DEC:
+      return state - 1
+    default:
+      return state
+  }
 }
-
-// export const reducerName = (state = , action) => {
-//   switch (action.type) {
-//     case 'ACTION_TYPE':
-//       return 
-//     default:
-//       return state
-//   }
-// }
