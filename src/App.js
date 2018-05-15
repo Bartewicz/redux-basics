@@ -1,5 +1,4 @@
 import React from 'react'
-import { RaisedButton } from 'material-ui'
 import Counter from './components/Counter';
 
 const style = {

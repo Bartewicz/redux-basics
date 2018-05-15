@@ -4,8 +4,8 @@ const DEC = 'counter/DEC'
 
 // Actions creators
 // This are functions that call for each Action
-export const inc = (number) => ({ type: INC, number })
-export const dec = (number) => ({ type: DEC, number })
+export const inc = (number = 1) => ({ type: INC, number })
+export const dec = (number = 1) => ({ type: DEC, number })
 
 // Initial state - state is empty by default
 const initialState = 0

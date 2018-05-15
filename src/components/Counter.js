@@ -1,25 +1,21 @@
 import React from 'react'
+// Material-ui
 import { RaisedButton } from 'material-ui'
 import { connect } from 'react-redux'
 import PaperRefined from '../UI/PaperRefined'
+// Reducer
+import { inc, dec } from '../state/counter'
 
 const style = {
   horizontalMargin: {
     margin: '0 0.25rem'
-  },
-  circled: {
-    background: '#DDDDDD',
-    display: 'flex',
-    justifyContent: 'center',
-    itemsAlign: 'center',
-    borderRadius: '100%'
   }
 }
 
 const Counter = (props) => (
   <div>
     <PaperRefined>
-      <div style={style.circled}>
+      <div>
         <h1>
           {props.counterValue}
         </h1>
@@ -30,25 +26,24 @@ const Counter = (props) => (
         style={style.horizontalMargin}
         secondary={true}
         label={'-'}
-      />
+        onClick={props.decreaseHandler}
+        />
       <RaisedButton
         style={style.horizontalMargin}
         primary={true}
         label={'+'}
+        onClick={props.increaseHandler}
       />
     </PaperRefined>
   </div>
 )
 
-const mapStateToProps = state => ({
-  // name of property = name of props where state would be stored
-  // value = part of state that would be stored
-  counterValue: state.counter
-})
-
-export default
-
-  connect(
-    mapStateToProps,
-    // mapDispatchToProps
+export default connect(
+    state => ({
+      counterValue: state.counter
+    }),
+    dispatch => ({
+      decreaseHandler: () => dispatch(dec()),
+      increaseHandler: () => dispatch(inc())
+    })
   )(Counter)
