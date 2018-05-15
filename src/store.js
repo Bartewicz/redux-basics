@@ -1,13 +1,15 @@
 // Redux
 import { createStore, combineReducers } from 'redux'
 // Reducers
-import counter, { inc, dec } from './state/counter'
-import todos, { addTask, delTask } from './state/todos'
+import counter from './state/counter'
+import todos from './state/todos'
+import header from './state/header'
 
 const reducer = combineReducers({
   // Shorter syntax for counter: counter
   counter,
-  todos
+  todos,
+  header
 })
 
 const store = createStore(
