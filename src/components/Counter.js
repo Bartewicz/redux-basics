@@ -1,7 +1,8 @@
 import React from 'react'
+// React-Redux
+import { connect } from 'react-redux'
 // Material-ui
 import { RaisedButton } from 'material-ui'
-import { connect } from 'react-redux'
 import PaperRefined from '../UI/PaperRefined'
 // Reducer
 import { inc, dec } from '../state/counter'

@@ -14,7 +14,7 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case ADD_TASK:
       return action.task ?
-      state.concat({description: action.task, completed: false})
+      state.concat({task: action.task, completed: false})
       :
       state
     case DELETE_TASK:
