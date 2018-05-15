@@ -15,12 +15,4 @@ const store = createStore(
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
-window.inc = (number = 1) => store.dispatch(inc(number))
-
-window.dec = (number = 1) => store.dispatch(dec(number))
-
-window.addTask = (task) => store.dispatch(addTask(task))
-
-window.delTask = (index) => store.dispatch(delTask(index))
-
 export default store

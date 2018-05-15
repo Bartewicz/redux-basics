@@ -6,23 +6,28 @@ import { RaisedButton } from 'material-ui'
 import PaperRefined from '../UI/PaperRefined'
 import { TextField } from 'material-ui'
 // Reducer
-import { addTask, delTask } from '../state/todos'
+import { addTask, delTask, newTaskChangeHandler } from '../state/todos'
 
-let text
+const style = {
+  center: {
+    textAlign: 'center',
+  }
+}
 
 const ToDo = (props) => (
   <div>
-    <PaperRefined>
+    <PaperRefined style={style.center}>
       <TextField
-      name={'new-task'}
-        onChange={(e, v) => { text = v }}
+        name={'new-task'}
+        onChange={props.onNewTaskChangeHandler}
+        value={props.newTaskText}
       />
     </PaperRefined>
-    <PaperRefined>
+    <PaperRefined style={style.center}>
       <RaisedButton
         primary={true}
         label={'Add task'}
-        onClick={() => props.addTask(text) }
+        onClick={props.onAddTask}
       />
     </PaperRefined>
     <ul>
@@ -46,10 +51,12 @@ const ToDo = (props) => (
 
 export default connect(
   state => ({
-    tasks: state.todos
+    tasks: state.todos.tasks,
+    newTaskText: state.todos.newTaskText
   }),
   dispatch => ({
-    addTask: (task) => dispatch(addTask(task)),
-    delTask: (index) => dispatch(delTask(index))
+    onAddTask: () => dispatch(addTask()),
+    delTask: (index) => dispatch(delTask(index)),
+    onNewTaskChangeHandler: (event, value) => dispatch(newTaskChangeHandler(value))
   })
 )(ToDo)
