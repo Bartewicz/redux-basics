@@ -1,11 +1,18 @@
 import React from 'react'
-import { store } from './store'
+import { RaisedButton } from 'material-ui'
+import Counter from './components/Counter';
+
+const style = {
+  centered: {
+    textAlign: 'center'
+  }
+}
 
 class App extends React.Component {
   render() {
     return (
-      <div>
-        Redux
+      <div style={style.centered}>
+        <Counter />
       </div>
     )
   }
