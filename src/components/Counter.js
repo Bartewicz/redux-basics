@@ -12,38 +12,38 @@ const style = {
   }
 }
 
-const Counter = (props) => (
-  <div>
-    <PaperRefined>
-      <div>
-        <h1>
-          {props.counterValue}
-        </h1>
-      </div>
-    </PaperRefined>
-    <PaperRefined>
-      <RaisedButton
-        style={style.horizontalMargin}
-        secondary={true}
-        label={'-'}
-        onClick={props.decreaseHandler}
-        />
-      <RaisedButton
-        style={style.horizontalMargin}
-        primary={true}
-        label={'+'}
-        onClick={props.increaseHandler}
-      />
-    </PaperRefined>
-  </div>
-)
-
 export default connect(
-    state => ({
-      counterValue: state.counter
-    }),
-    dispatch => ({
-      decreaseHandler: () => dispatch(dec()),
-      increaseHandler: () => dispatch(inc())
-    })
-  )(Counter)
+  state => ({
+    counterValue: state.counter
+  }),
+  dispatch => ({
+    decreaseHandler: () => dispatch(dec()),
+    increaseHandler: () => dispatch(inc())
+  })
+)(
+  (props) => (
+    <div>
+      <PaperRefined>
+        <div>
+          <h1>
+            {props.counterValue}
+          </h1>
+        </div>
+      </PaperRefined>
+      <PaperRefined>
+        <RaisedButton
+          style={style.horizontalMargin}
+          secondary={true}
+          label={'-'}
+          onClick={props.decreaseHandler}
+        />
+        <RaisedButton
+          style={style.horizontalMargin}
+          primary={true}
+          label={'+'}
+          onClick={props.increaseHandler}
+        />
+      </PaperRefined>
+    </div>
+  )
+)
