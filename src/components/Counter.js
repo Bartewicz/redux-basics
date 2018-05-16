@@ -18,8 +18,8 @@ export default connect(
     counterValue: state.counter
   }),
   dispatch => ({
-    decreaseHandler: () => dispatch(dec()),
-    increaseHandler: () => dispatch(inc())
+    onDecClick: () => dispatch(dec()),
+    onIncClick: () => dispatch(inc())
   })
 )(
   (props) => (
@@ -27,7 +27,7 @@ export default connect(
       <PaperRefined>
         <div>
           <h1>
-            {props.counterValue}
+            {props.asyncCounterValue}
           </h1>
         </div>
       </PaperRefined>
@@ -36,13 +36,13 @@ export default connect(
           style={style.horizontalMargin}
           secondary={true}
           label={'-'}
-          onClick={props.decreaseHandler}
+          onClick={props.onDecClick}
         />
         <RaisedButton
           style={style.horizontalMargin}
           primary={true}
           label={'+'}
-          onClick={props.increaseHandler}
+          onClick={props.onIncClick}
         />
       </PaperRefined>
     </div>
