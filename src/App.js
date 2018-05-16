@@ -1,11 +1,12 @@
 import React from 'react'
-import Header from './components/Header'
+// Components
+import UsersList from './components/UsersList'
 
 class App extends React.Component {
   render() {
     return (
       <div>
-        <Header />
+        <UsersList />
       </div>
     )
   }
