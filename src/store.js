@@ -7,6 +7,7 @@ import todos from './state/todos'
 import header from './state/header'
 import randomUsers from './state/randomUsers'
 import asyncReduxCounter, { initCounterSync } from './state/asyncReduxCounter'
+import auth, {initAuthUserSync} from './state/auth'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
@@ -16,7 +17,8 @@ const reducer = combineReducers({
   todos,
   header,
   randomUsers,
-  asyncReduxCounter
+  asyncReduxCounter,
+  auth
 })
 
 const store = createStore(
@@ -28,5 +30,7 @@ const store = createStore(
 )
 
 export default store
+
+store.dispatch(initAuthUserSync())
 
 store.dispatch(initCounterSync())
