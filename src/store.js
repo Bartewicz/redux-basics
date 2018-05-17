@@ -8,6 +8,7 @@ import header from './state/header'
 import randomUsers from './state/randomUsers'
 import asyncReduxCounter, { initCounterSync } from './state/asyncReduxCounter'
 import auth, {initAuthUserSync} from './state/auth'
+import isSideBarOpen from './state/sideBar'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
@@ -18,7 +19,8 @@ const reducer = combineReducers({
   header,
   randomUsers,
   asyncReduxCounter,
-  auth
+  auth,
+  isSideBarOpen
 })
 
 const store = createStore(

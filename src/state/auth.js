@@ -1,4 +1,4 @@
-import { auth, googleProvider } from '../firebase'
+import { auth, database, googleProvider } from '../firebase'
 
 const LOGGED_IN = 'auth/LOGGED_IN'
 const LOGGED_OUT = 'auth/LOGGED_OUT'
@@ -7,11 +7,18 @@ export const loggedIn = (user) => ({ type: LOGGED_IN, user })
 
 export const loggedOut = () => ({ type: LOGGED_OUT })
 
+export const logUserLogIn = () => (dispatch, getState) => {
+  const userUid = getState().auth.user.uid
+  database.ref(`/users/${userUid}/loginsLogs`)
+    .push({ timestamp: Date.now() })
+}
+
 export const initAuthUserSync = () => (dispatch, getState) => {
   auth.onAuthStateChanged(
     user => {
       if (user) {
         dispatch(loggedIn(user))
+        dispatch(logUserLogIn())
       } else {
         dispatch(loggedOut())
       }
@@ -20,7 +27,11 @@ export const initAuthUserSync = () => (dispatch, getState) => {
 }
 
 export const logInByGoogle = () => (dispatch, getState) => {
-  auth.signInWithRedirect(googleProvider)
+  auth.signInWithPopup(googleProvider)
+}
+
+export const logOut = () => (dispatch, getState) => {
+  auth.signOut()
 }
 
 const initialState = {
